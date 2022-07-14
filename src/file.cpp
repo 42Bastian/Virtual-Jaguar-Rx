@@ -40,7 +40,7 @@
 #include "zlib.h"
 #include "libelf.h"
 #include "gelf.h"
-//#include "libdwarf.h"
+#include "libdwarf.h"
 #include "debugger/ELFManager.h"
 #include "debugger/DBGManager.h"
 #include "settings.h"

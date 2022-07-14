@@ -13,7 +13,6 @@
 
 #include "gamepad.h"
 #include "log.h"
-#include <string.h>
 
 
 // Class member initialization
@@ -56,8 +55,7 @@ void Gamepad::AllocateJoysticks(void)
 		// We need to copy the contents of this pointer, as SDL will change it
 		// willy nilly to suit itself
 //		padName[i] = SDL_JoystickName(i);
-	//	strncpy(&padName[i], SDL_JoystickName(i), 127);
-	
+		strncpy(padName[i], SDL_JoystickName(i), 127);
 		padName[i][127] = 0;	// Just in case name's length > 127
 
 		if (pad[i])

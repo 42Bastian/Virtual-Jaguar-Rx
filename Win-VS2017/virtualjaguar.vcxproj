@@ -65,7 +65,7 @@
     <IncludePath>c:\develop\libelf\lib;C:\develop\zlib\zlib;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\develop\SDL-2.0.20-b424665\SDL-1.2\include;C:\compiler\Qt\5.15.2\msvc2019\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>c:\develop\libelf\lib;C:\develop\zlib\zlib;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\develop\SDL-2.0.20-b424665\SDL-1.2\include;C:\compiler\Qt\5.15.2\msvc2019\include</IncludePath>
+    <IncludePath>c:\develop\libelf\lib;C:\develop\zlib\zlib;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\develop\SDL-2.0.20-b424665\SDL-1.2\include;C:\compiler\Qt\5.15.2\msvc2019\include;C:\develop\libdwarf\libdwarf-code\build\libdwarf;C:\develop\libdwarf\libdwarf-code\libdwarf</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -90,8 +90,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Qt5PlatformCompositorSupport.lib;qtmain.lib;Qt5OpenGL.lib;shell32.lib;jaguarcore.lib;zlibwapi.lib;m68000.lib;gdi32.lib;user32.lib;SDL.lib;libelf.lib;legacy_stdio_definitions.lib;OpenGL32.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;opengl32.lib;glu32.lib;Ws2_32.lib;imm32.lib;winmm.lib;Advapi32.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;obj;..\..\src\m68000\obj;C:\develop\zlib\zlib\contrib\vstudio\vc14\x64\ZlibDllReleaseWithoutAsm;C:\develop\SDL-2.0.20-b424665\SDL-1.2\VisualC\x64\Release;C:\develop\libelf\lib;m68000\x64\Release;jaguarcore\x64\Release;C:\Program Files\Microsoft SDKs\Windows\v6.0A\Lib\x64;C:\SDK\DWARF\libdwarf-20210528-VS2017\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt5PlatformCompositorSupport.lib;qtmain.lib;Qt5OpenGL.lib;shell32.lib;jaguarcore.lib;zlibwapi.lib;dwarf.lib;m68000.lib;gdi32.lib;user32.lib;SDL.lib;libelf.lib;legacy_stdio_definitions.lib;OpenGL32.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;opengl32.lib;glu32.lib;Ws2_32.lib;imm32.lib;winmm.lib;Advapi32.lib;dxguid.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;obj;..\..\src\m68000\obj;C:\develop\zlib\zlib\contrib\vstudio\vc14\x64\ZlibDllReleaseWithoutAsm;C:\develop\SDL-2.0.20-b424665\SDL-1.2\VisualC\x64\Release;C:\develop\libelf\lib;m68000\x64\Release;jaguarcore\x64\Release;C:\Program Files\Microsoft SDKs\Windows\v6.0A\Lib\x64;C:\develop\libdwarf\libdwarf-code\build\libdwarf\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -168,6 +168,7 @@
     <ClCompile Include="..\src\debugger\BreakpointsWin.cpp" />
     <ClCompile Include="..\src\debugger\callstackbrowser.cpp" />
     <ClCompile Include="..\src\debugger\CartFilesListWin.cpp" />
+    <ClCompile Include="..\src\debugger\DWARFManager.cpp" />
     <ClCompile Include="..\src\debugger\exceptionvectortablebrowser.cpp" />
     <ClCompile Include="..\src\debugger\FilesrcListWin.cpp" />
     <ClCompile Include="..\src\debugger\localbrowser.cpp" />

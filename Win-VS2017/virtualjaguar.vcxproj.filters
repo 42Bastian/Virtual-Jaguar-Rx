@@ -499,6 +499,9 @@
     <ClCompile Include="..\src\gui\debug\romcartbrowser.cpp">
       <Filter>Source Files\alpine</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\debugger\DWARFManager.cpp">
+      <Filter>Source Files\debugger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\debugger\DWARFManager.h">

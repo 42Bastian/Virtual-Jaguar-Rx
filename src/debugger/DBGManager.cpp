@@ -31,7 +31,7 @@
 #include "gelf.h"
 #include "log.h"
 #include "ELFManager.h"
-//#include "DWARFManager.h"
+#include "DWARFManager.h"
 #include "DBGManager.h"
 #include "HWLABELManager.h"
 #include "settings.h"
@@ -125,7 +125,7 @@ void DBGManager_SourceFileSearchPathsSet(char *ListPaths)
 		}
 	}
 
-//	DWARFManager_Set(NbSFSearchPaths, SourceFileSearchPaths);
+	DWARFManager_Set(NbSFSearchPaths, SourceFileSearchPaths);
 }
 
 
@@ -161,7 +161,7 @@ void DBGManager_Init(void)
 	// ELF initialisation 
 	ELFManager_Init();
 	// DWARF initialisation
-//	DWARFManager_Init();
+	DWARFManager_Init();
 }
 
 
@@ -170,7 +170,7 @@ void DBGManager_Reset(void)
 {
 	if ((DBGType & DBG_DWARF))
 	{
-//		DWARFManager_Reset();
+		DWARFManager_Reset();
 	}
 
 	if ((DBGType & DBG_ELF))
@@ -188,7 +188,7 @@ void DBGManager_Close(void)
 {
 	if ((DBGType & DBG_DWARF))
 	{
-//		DWARFManager_Close();
+		DWARFManager_Close();
 	}
 
 	if ((DBGType & DBG_ELF))
@@ -221,8 +221,7 @@ char *DBGManager_GetFullSourceFilenameFromAdr(size_t Adr, DBGstatus *Status)
 {
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		return NULL;
-		//return DWARFManager_GetFullSourceFilenameFromAdr(Adr, (DWARFstatus *)Status);
+		return DWARFManager_GetFullSourceFilenameFromAdr(Adr, (DWARFstatus *)Status);
 	}
 	else
 	{
@@ -237,7 +236,7 @@ size_t DBGManager_GetNbVariables(size_t Adr)
 {
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		return 0;// DWARFManager_GetNbVariables(Adr);
+		return DWARFManager_GetNbVariables(Adr);
 	}
 	else
 	{
@@ -252,7 +251,7 @@ S_VariablesStruct* DBGManager_GetInfosVariable(size_t Adr, size_t Index)
 {
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		return NULL;// (S_VariablesStruct*)DWARFManager_GetInfosVariable(Adr, Index);
+		return (S_VariablesStruct*)DWARFManager_GetInfosVariable(Adr, Index);
 	}
 	else
 	{
@@ -268,7 +267,7 @@ size_t DBGManager_GetGlobalVariableAdrFromName(char *VariableName)
 {
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		return 0;// DWARFManager_GetGlobalVariableAdrFromName(VariableName);
+		return DWARFManager_GetGlobalVariableAdrFromName(VariableName);
 	}
 	else
 	{
@@ -682,7 +681,7 @@ char *DBGManager_GetFunctionName(size_t Adr)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//Symbolname = DWARFManager_GetFunctionName(Adr);
+		Symbolname = DWARFManager_GetFunctionName(Adr);
 	}
 
 	if ((DBGType & DBG_ELF) && (Symbolname == NULL))
@@ -701,7 +700,7 @@ size_t DBGManager_GetNumLineFromAdr(size_t Adr, size_t Tag)
 {
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		return 0;// DWARFManager_GetNumLineFromAdr(Adr, Tag);
+		return DWARFManager_GetNumLineFromAdr(Adr, Tag);
 	}
 	else
 	{
@@ -736,7 +735,7 @@ char *DBGManager_GetSymbolNameFromAdr(size_t Adr)
 	{
 		if ((DBGType & DBG_ELFDWARF))
 		{
-			//Symbolname = DWARFManager_GetSymbolnameFromAdr(Adr);
+			Symbolname = DWARFManager_GetSymbolnameFromAdr(Adr);
 		}
 
 		if ((DBGType & DBG_ELF) && (Symbolname == NULL))
@@ -758,7 +757,7 @@ char *DBGManager_GetLineSrcFromAdr(size_t Adr, size_t Tag)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//TextLine = DWARFManager_GetLineSrcFromAdr(Adr, Tag);
+		TextLine = DWARFManager_GetLineSrcFromAdr(Adr, Tag);
 	}
 
 	return	TextLine;
@@ -773,7 +772,7 @@ char *DBGManager_GetLineSrcFromAdrNumLine(size_t Adr, size_t NumLine)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//TextLine = DWARFManager_GetLineSrcFromAdrNumLine(Adr, NumLine);
+		TextLine = DWARFManager_GetLineSrcFromAdrNumLine(Adr, NumLine);
 	}
 
 	return	TextLine;
@@ -788,7 +787,7 @@ char *DBGManager_GetLineSrcFromNumLineBaseAdr(size_t Adr, size_t NumLine)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//TextLine = DWARFManager_GetLineSrcFromNumLineBaseAdr(Adr, NumLine);
+		TextLine = DWARFManager_GetLineSrcFromNumLineBaseAdr(Adr, NumLine);
 	}
 
 	return	TextLine;
@@ -802,7 +801,7 @@ size_t DBGManager_GetNbSources(void)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//Nbr = DWARFManager_GetNbSources();
+		Nbr = DWARFManager_GetNbSources();
 	}
 
 	return Nbr;
@@ -816,7 +815,7 @@ char *DBGManager_GetNumSourceFilename(size_t Index)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//SourceFilename = DWARFManager_GetNumSourceFilename(Index);
+		SourceFilename = DWARFManager_GetNumSourceFilename(Index);
 	}
 
 	return	SourceFilename;
@@ -830,7 +829,7 @@ char *DBGManager_GetNumFullSourceFilename(size_t Index)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//FullSourceFilename = DWARFManager_GetNumFullSourceFilename(Index);
+		FullSourceFilename = DWARFManager_GetNumFullSourceFilename(Index);
 	}
 
 	return	FullSourceFilename;
@@ -844,7 +843,7 @@ size_t DBGManager_GetSrcNbListPtrFromIndex(size_t Index, bool Used)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//NbListPtr = DWARFManager_GetSrcNbListPtrFromIndex(Index, Used);
+		NbListPtr = DWARFManager_GetSrcNbListPtrFromIndex(Index, Used);
 	}
 
 	return	NbListPtr;
@@ -858,7 +857,7 @@ size_t *DBGManager_GetSrcNumLinesPtrFromIndex(size_t Index, bool Used)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//PtrNumLines = DWARFManager_GetSrcNumLinesPtrFromIndex(Index, Used);
+		PtrNumLines = DWARFManager_GetSrcNumLinesPtrFromIndex(Index, Used);
 	}
 
 	return	PtrNumLines;
@@ -872,7 +871,7 @@ char **DBGManager_GetSrcListPtrFromIndex(size_t Index, bool Used)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//PtrSource = DWARFManager_GetSrcListPtrFromIndex(Index, Used);
+		PtrSource = DWARFManager_GetSrcListPtrFromIndex(Index, Used);
 	}
 
 	return	PtrSource;
@@ -886,7 +885,7 @@ size_t DBGManager_GetSrcLanguageFromIndex(size_t Index)
 
 	if ((DBGType & DBG_ELFDWARF))
 	{
-		//Language = DWARFManager_GetSrcLanguageFromIndex(Index);
+		Language = DWARFManager_GetSrcLanguageFromIndex(Index);
 	}
 
 	return	Language;
