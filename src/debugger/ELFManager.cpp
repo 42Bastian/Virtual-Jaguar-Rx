@@ -22,10 +22,10 @@
 #include <sys/stat.h>
 #include "libelf.h"
 #include "gelf.h"
-#include "libdwarf.h"
+//#include "libdwarf.h"
 #include "log.h"
 #include "ELFManager.h"
-#include "DWARFManager.h"
+//#include "DWARFManager.h"
 
 
 //#define LOG_SUPPORT					// Support log
@@ -154,7 +154,8 @@ void	ELFManager_Init(void)
 // ELF manager Dwarf Initialisation
 bool	ELFManager_DwarfInit(Elf *PtrElfMem, struct stat FileElfInfo)
 {
-	return (ElfDwarf = (DWARFManager_ElfInit(PtrElfMem, FileElfInfo) == DW_DLV_OK) ? true : false);
+	return false;
+	//return (ElfDwarf = (DWARFManager_ElfInit(PtrElfMem, FileElfInfo) == DW_DLV_OK) ? true : false);
 }
 
 
@@ -163,7 +164,7 @@ void	ELFManager_Reset(void)
 {
 	if (ElfDwarf)
 	{
-		DWARFManager_Reset();
+//		DWARFManager_Reset();
 		ElfDwarf = false;
 	}
 

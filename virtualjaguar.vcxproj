@@ -1,0 +1,761 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9B868C03-321D-3C04-A4AA-17250828F3EA}</ProjectGuid>
+    <RootNamespace>virtualjaguar</RootNamespace>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.20348.0</WindowsTargetPlatformMinVersion>
+  <QtMsBuild Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>obj\</IntermediateDirectory>
+    <PrimaryOutput>virtualjaguar</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>obj\</IntermediateDirectory>
+    <PrimaryOutput>virtualjaguar</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" /><Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')"><Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." /></Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" /><ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')"><Import Project="$(QtMsBuild)\qt_defaults.props" /></ImportGroup><PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"><OutDir>debug\</OutDir><IntDir>obj\</IntDir><TargetName>virtualjaguar</TargetName><IgnoreImportLibrary>true</IgnoreImportLibrary></PropertyGroup><PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'"><OutDir>release\</OutDir><IntDir>obj\</IntDir><TargetName>virtualjaguar</TargetName><IgnoreImportLibrary>true</IgnoreImportLibrary><LinkIncremental>false</LinkIncremental></PropertyGroup><PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"><QtInstall>5.15.2_msvc2019_64</QtInstall><QtModules>core;opengl;gui;widgets</QtModules></PropertyGroup><PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'"><QtInstall>5.15.2_msvc2019_64</QtInstall><QtModules>core;opengl;gui;widgets</QtModules></PropertyGroup><ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')"><Import Project="$(QtMsBuild)\qt.props" /></ImportGroup>
+  
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;src;src\debugger;src\gui;obj;\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus `$(CROSS)sdl-config --cflags` -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>obj\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;__GCCWIN32__;NDEBUG;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName></ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    <MultiProcessorCompilation>true</MultiProcessorCompilation></ClCompile>
+    <Link>
+      <AdditionalDependencies>jaguarcore.lib;z.lib;m68k.lib;elf.lib;dwarf.lib;`$(CROSS)sdl-config;--static-libs`;-static;-static-libgcc;-static-libstdc++;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>obj;src\m68000\obj;C:\openssl\lib;C:\Utils\my_sql\mysql-5.7.25-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>$(OutDir)\virtualjaguar.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;__GCCWIN32__;NDEBUG;QT_NO_DEBUG;QT_OPENGL_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  <QtMoc><CompilerFlavor>msvc</CompilerFlavor><Include>./obj/moc_predefs.h</Include><ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription><DynamicSource>output</DynamicSource><QtMocDir>obj</QtMocDir><QtMocFileName>moc_%(Filename).cpp</QtMocFileName></QtMoc><QtRcc><Compression>default</Compression><InitFuncName>virtualjaguar</InitFuncName><ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription><QtRccDir>obj</QtRccDir><QtRccFileName>qrc_%(Filename).cpp</QtRccFileName></QtRcc></ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;src;src\debugger;src\gui;obj;\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus `$(CROSS)sdl-config --cflags` -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>obj\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;__GCCWIN32__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    <MultiProcessorCompilation>true</MultiProcessorCompilation></ClCompile>
+    <Link>
+      <AdditionalDependencies>jaguarcore.lib;z.lib;m68k.lib;elf.lib;dwarf.lib;`$(CROSS)sdl-config;--static-libs`;-static;-static-libgcc;-static-libstdc++;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>obj;src\m68000\obj;C:\openssl\lib;C:\Utils\my_sql\mysql-5.7.25-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\virtualjaguar.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;__GCCWIN32__;QT_OPENGL_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  <QtRcc><InitFuncName>virtualjaguar</InitFuncName><Compression>default</Compression><ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription><QtRccDir>obj</QtRccDir><QtRccFileName>qrc_%(Filename).cpp</QtRccFileName></QtRcc><QtMoc><CompilerFlavor>msvc</CompilerFlavor><Include>./obj/moc_predefs.h</Include><ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription><DynamicSource>output</DynamicSource><QtMocDir>obj</QtMocDir><QtMocFileName>moc_%(Filename).cpp</QtMocFileName></QtMoc></ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\debugger\BreakpointsWin.cpp" />
+    <ClCompile Include="src\debugger\CartFilesListWin.cpp" />
+    <ClCompile Include="src\debugger\DBGManager.cpp" />
+    <ClCompile Include="src\debugger\DSPDasmWin.cpp" />
+    <ClCompile Include="src\debugger\DWARFManager.cpp" />
+    <ClCompile Include="src\debugger\DasmWin.cpp" />
+    <ClCompile Include="src\debugger\ELFManager.cpp" />
+    <ClCompile Include="src\debugger\FilesrcListWin.cpp" />
+    <ClCompile Include="src\debugger\GPUDasmWin.cpp" />
+    <ClCompile Include="src\debugger\HWLABELManager.cpp" />
+    <ClCompile Include="src\LEB128.cpp" />
+    <ClCompile Include="src\debugger\NewFnctBreakpointWin.cpp" />
+    <ClCompile Include="src\debugger\SaveDumpAsWin.cpp" />
+    <ClCompile Include="src\debugger\SourceCWin.cpp" />
+    <ClCompile Include="src\debugger\SourcesWin.cpp" />
+    <ClCompile Include="src\debugger\VideoWin.cpp" />
+    <ClCompile Include="src\gui\about.cpp" />
+    <ClCompile Include="src\debugger\allwatchbrowser.cpp" />
+    <ClCompile Include="src\gui\alpinetab.cpp" />
+    <ClCompile Include="src\gui\app.cpp" />
+    <ClCompile Include="src\debugger\callstackbrowser.cpp" />
+    <ClCompile Include="src\gui\configdialog.cpp" />
+    <ClCompile Include="src\gui\controllertab.cpp" />
+    <ClCompile Include="src\gui\controllerwidget.cpp" />
+    <ClCompile Include="src\gui\debug\cpubrowser.cpp" />
+    <ClCompile Include="src\crc32.cpp" />
+    <ClCompile Include="src\debugger\debuggertab.cpp" />
+    <ClCompile Include="src\gui\emustatus.cpp" />
+    <ClCompile Include="src\gui\exceptionstab.cpp" />
+    <ClCompile Include="src\debugger\exceptionvectortablebrowser.cpp" />
+    <ClCompile Include="src\file.cpp" />
+    <ClCompile Include="src\gui\filelistmodel.cpp" />
+    <ClCompile Include="src\gui\filepicker.cpp" />
+    <ClCompile Include="src\gui\filethread.cpp" />
+    <ClCompile Include="src\gui\gamepad.cpp" />
+    <ClCompile Include="src\gui\generaltab.cpp" />
+    <ClCompile Include="src\gui\glwidget.cpp" />
+    <ClCompile Include="src\debugger\heapallocatorbrowser.cpp" />
+    <ClCompile Include="src\gui\help.cpp" />
+    <ClCompile Include="src\gui\debug\hwregsblitterbrowser.cpp" />
+    <ClCompile Include="src\gui\debug\hwregsbrowser.cpp" />
+    <ClCompile Include="src\gui\imagedelegate.cpp" />
+    <ClCompile Include="src\gui\keybindingstab.cpp" />
+    <ClCompile Include="src\gui\keygrabber.cpp" />
+    <ClCompile Include="src\debugger\localbrowser.cpp" />
+    <ClCompile Include="src\log.cpp" />
+    <ClCompile Include="src\debugger\m68kDasmWin.cpp" />
+    <ClCompile Include="src\gui\debug\m68kdasmbrowser.cpp" />
+    <ClCompile Include="src\gui\mainwin.cpp" />
+    <ClCompile Include="src\debugger\memory1browser.cpp" />
+    <ClCompile Include="src\gui\debug\memorybrowser.cpp" />
+    <ClCompile Include="src\gui\modelsbiostab.cpp" />
+    <ClCompile Include="src\gui\debug\opbrowser.cpp" />
+    <ClCompile Include="src\gui\profile.cpp" />
+    <ClCompile Include="src\gui\debug\riscdasmbrowser.cpp" />
+    <ClCompile Include="src\gui\debug\romcartbrowser.cpp" />
+    <ClCompile Include="src\settings.cpp" />
+    <ClCompile Include="src\gui\debug\stackbrowser.cpp" />
+    <ClCompile Include="src\unzip.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="src\debugger\BreakpointsWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\CartFilesListWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\debugger\DBGManager.h" />
+    <QtMoc Include="src\debugger\DSPDasmWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\debugger\DWARFManager.h" />
+    <QtMoc Include="src\debugger\DasmWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\debugger\ELFManager.h" />
+    <QtMoc Include="src\debugger\FilesrcListWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\GPUDasmWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\debugger\HWLABELManager.h" />
+    <ClInclude Include="src\LEB128.h" />
+    <QtMoc Include="src\debugger\NewFnctBreakpointWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\SaveDumpAsWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\SourceCWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\SourcesWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\VideoWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\gui\about.h" />
+    <QtMoc Include="src\debugger\allwatchbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\alpinetab.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\gui\app.h" />
+    <QtMoc Include="src\debugger\callstackbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\configdialog.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\controllertab.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\controllerwidget.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\debug\cpubrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\crc32.h" />
+    <QtMoc Include="src\debugger\debuggertab.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\emustatus.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\exceptionstab.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\exceptionvectortablebrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\file.h" />
+    <ClInclude Include="src\gui\filelistmodel.h" />
+    <QtMoc Include="src\gui\filepicker.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\filethread.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\gui\gamepad.h" />
+    <QtMoc Include="src\gui\generaltab.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\glwidget.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\heapallocatorbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\gui\help.h" />
+    <QtMoc Include="src\gui\debug\hwregsblitterbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\debug\hwregsbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\gui\imagedelegate.h" />
+    <QtMoc Include="src\gui\keybindingstab.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\keygrabber.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\localbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\log.h" />
+    <QtMoc Include="src\debugger\m68kDasmWin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\debug\m68kdasmbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\mainwin.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\debugger\memory1browser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\debug\memorybrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\modelsbiostab.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\debug\opbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\gui\profile.h" />
+    <QtMoc Include="src\gui\debug\riscdasmbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <QtMoc Include="src\gui\debug\romcartbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\settings.h" />
+    <QtMoc Include="src\gui\debug\stackbrowser.h">
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtMoc>
+    <ClInclude Include="src\unzip.h" />
+  </ItemGroup>
+  <ItemGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <CustomBuild Include="obj\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus `$(CROSS)sdl-config --cflags` -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;obj\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">obj\moc_predefs.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus `$(CROSS)sdl-config --cflags` -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;obj\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">obj\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    
+    
+    
+    
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\ELF-file.png" />
+    <None Include="res\alpine-file.png" />
+    <None Include="res\blur-off.png" />
+    <None Include="res\blur-on.png" />
+    <None Include="res\cart-blank.png" />
+    <None Include="res\compact-disc.png" />
+    <None Include="res\controller.png" />
+    <None Include="res\debug-breakpoints.png" />
+    <None Include="res\debug-callstack.png" />
+    <None Include="res\debug-deleteallbreakpoints.png" />
+    <None Include="res\debug-disableallbreakpoints.png" />
+    <None Include="res\debug-local.png" />
+    <None Include="res\debug-memory.png" />
+    <None Include="res\debug-restart.png" />
+    <None Include="res\debug-stepinto.png" />
+    <None Include="res\debug-stepover.png" />
+    <None Include="res\debug-watch.png" />
+    <None Include="res\exit.png" />
+    <None Include="res\frame-advance.png" />
+    <None Include="res\fullscreen.png" />
+    <None Include="res\generic.png" />
+    <None Include="res\help.html" />
+    <None Include="res\homebrew-file.png" />
+    <None Include="res\insert.png" />
+    <None Include="res\label-blank.png" />
+    <None Include="res\ntsc.png" />
+    <None Include="res\pal.png" />
+    <None Include="res\pause-off.png" />
+    <None Include="res\pause-on.png" />
+    <None Include="res\power-off.png" />
+    <None Include="res\power-on-green.png" />
+    <None Include="res\power-on-red.png" />
+    <None Include="res\screenshot.png" />
+    <None Include="res\skunkboard-file.png" />
+    <None Include="res\software.png" />
+    <None Include="res\status.png" />
+    <None Include="res\test-pattern-pal.jpg" />
+    <None Include="res\test-pattern.jpg" />
+    <None Include="res\tool-68k-dis.png" />
+    <None Include="res\tool-cpu.png" />
+    <None Include="res\tool-dsp-ram.png" />
+    <None Include="res\tool-gpu-ram.png" />
+    <None Include="res\tool-hw-regs.png" />
+    <None Include="res\tool-memory.png" />
+    <None Include="res\tool-op.png" />
+    <None Include="res\tool-risc-dis.png" />
+    <None Include="res\tool-romcart.png" />
+    <None Include="res\tool-stack.png" />
+    <None Include="res\unknown-file.png" />
+    <None Include="res\upper-left.png" />
+    <None Include="res\upper-right.png" />
+    <QtRcc Include="src\gui\virtualjaguar.qrc">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </QtRcc>
+    <None Include="res\vj-icon.png" />
+    <None Include="res\vj_rx_title_small.png" />
+    <None Include="res\wrench.png" />
+    <None Include="res\zoom100.png" />
+    <None Include="res\zoom200.png" />
+    <None Include="res\zoom300.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\vj.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" /><ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')"><Import Project="$(QtMsBuild)\qt.targets" /></ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

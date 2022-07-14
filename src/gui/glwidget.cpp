@@ -25,7 +25,7 @@
 #include <GL/gl.h>
 #endif
 // Apparently on win32, various OpenGL constants aren't pulled in.
-#include <GL/glext.h>
+//#include <GL/glext.h>
 #endif
 
 

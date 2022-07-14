@@ -40,7 +40,7 @@
 #include "zlib.h"
 #include "libelf.h"
 #include "gelf.h"
-#include "libdwarf.h"
+//#include "libdwarf.h"
 #include "debugger/ELFManager.h"
 #include "debugger/DBGManager.h"
 #include "settings.h"
@@ -210,13 +210,14 @@ WriteLog("FILE: Cartridge run address is reported as $%X...\n", jaguarRunAddress
 			{
 				// get the file information
 				stat(path, &_statbuf);
-
+				/*
 				if (ELFManager_DwarfInit(ElfMem, _statbuf))
 				{
 					DBGType |= DBG_ELFDWARF;
 				}
-
-				if (!elf_getshdrnum(ElfMem, &NbrSect))
+				*/
+				
+				if (0 /*!elf_getshdrnum(ElfMem, &NbrSect)*/)
 				{
 					if (((PtrGElfEhdr = gelf_getehdr(ElfMem, &ElfEhdr)) != NULL) && ((PtrElfScn = elf_getscn(ElfMem, 0)) != NULL))
 					{
