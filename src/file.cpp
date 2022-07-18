@@ -210,14 +210,13 @@ WriteLog("FILE: Cartridge run address is reported as $%X...\n", jaguarRunAddress
 			{
 				// get the file information
 				stat(path, &_statbuf);
-				/*
+
 				if (ELFManager_DwarfInit(ElfMem, _statbuf))
 				{
 					DBGType |= DBG_ELFDWARF;
 				}
-				*/
-				
-				if (0 /*!elf_getshdrnum(ElfMem, &NbrSect)*/)
+
+				if (!elf_getshdrnum(ElfMem, &NbrSect))
 				{
 					if (((PtrGElfEhdr = gelf_getehdr(ElfMem, &ElfEhdr)) != NULL) && ((PtrElfScn = elf_getscn(ElfMem, 0)) != NULL))
 					{
